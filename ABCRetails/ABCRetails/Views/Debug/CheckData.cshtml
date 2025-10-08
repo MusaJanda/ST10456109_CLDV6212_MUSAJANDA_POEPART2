@@ -1,0 +1,53 @@
+﻿@{
+    ViewData["Title"] = "Data Debug";
+}
+
+<h2>Data Debug Information</h2>
+
+<h3>Customers (@ViewBag.Customers?.Count)</h3>
+<table class="table">
+    <thead>
+        <tr>
+            <th>RowKey</th>
+            <th>Name</th>
+            <th>Surname</th>
+            <th>Username</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var customer in ViewBag.Customers)
+        {
+            <tr>
+                <td>@customer.RowKey</td>
+                <td>@customer.Name</td>
+                <td>@customer.Surname</td>
+                <td>@customer.Username</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<h3>Products (@ViewBag.Products?.Count)</h3>
+<table class="table">
+    <thead>
+        <tr>
+            <th>RowKey</th>
+            <th>ProductName</th>
+            <th>Price</th>
+            <th>Stock</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var product in ViewBag.Products)
+        {
+            <tr>
+                <td>@product.RowKey</td>
+                <td>@product.ProductName</td>
+                <td>@product.Price</td>
+                <td>@product.StockAvailable</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-controller="Order" asp-action="Create" class="btn btn-primary">Try Create Order Again</a>

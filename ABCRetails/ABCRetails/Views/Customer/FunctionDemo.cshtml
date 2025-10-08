@@ -1,0 +1,39 @@
+﻿@model ABCRetails.Models.FunctionDemoViewModel
+@{
+    ViewData["Title"] = "Azure Function Demo";
+}
+
+<h1 class="text-3xl font-bold mb-6 text-gray-800">Azure Storage Function Integration Demo</h1>
+
+<div class="space-y-6">
+    <p class="text-lg text-gray-600">This page demonstrates calling the four Azure Functions that integrate with Azure Storage services.</p>
+
+    <div class="p-6 border rounded-xl shadow-lg bg-white">
+        <h2 class="text-xl font-semibold mb-3 text-indigo-700">1. Azure Table (Input Binding)</h2>
+        <p class="mb-2 text-gray-700">Calls <code>GetCustomerDetails</code> to read customer "DemoCustomer1" from the table.</p>
+        <p class="font-mono text-sm p-3 bg-indigo-50 border-l-4 border-indigo-300 rounded overflow-x-auto">
+            <strong>Result:</strong> @Model.TableResult
+        </p>
+    </div>
+
+    <div class="p-6 border rounded-xl shadow-lg bg-white">
+        <h2 class="text-xl font-semibold mb-3 text-green-700">2. Azure Blob (Output Binding)</h2>
+        <p class="mb-2 text-gray-700">Calls <code>UploadTextToBlob</code> to write a simple log file to the Blob Storage <code>log-container</code>.</p>
+        <p class="font-mono text-sm p-3 bg-green-50 border-l-4 border-green-300 rounded overflow-x-auto">
+            <strong>Result:</strong> @Model.BlobResult
+        </p>
+    </div>
+
+    <div class="p-6 border rounded-xl shadow-lg bg-white">
+        <h2 class="text-xl font-semibold mb-3 text-yellow-700">3. Azure File Share (SDK Integration)</h2>
+        <p class="mb-2 text-gray-700">Calls <code>UploadToFileShare</code> to save a mock report to the <code>abcretails-reports</code> File Share.</p>
+        <p class="font-mono text-sm p-3 bg-yellow-50 border-l-4 border-yellow-300 rounded overflow-x-auto">
+            <strong>Result:</strong> @Model.FileShareResult
+        </p>
+    </div>
+</div>
+
+<div class="mt-8 p-4 bg-blue-100 border border-blue-300 rounded-lg text-md text-blue-800">
+    <h3 class="font-bold mb-1">Queue Integration Note:</h3>
+    <p>The **Azure Queue** integration is shown dynamically in the <code>Create</code> action. When you successfully create a new customer, an order message is immediately enqueued using the <code>EnqueueOrderForProcessing</code> function.</p>
+</div>
